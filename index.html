@@ -1,0 +1,115 @@
+<script>
+
+    'use strict';
+    
+    /*
+    Simple rock paper scissors game that plays 5 rounds then gives the final outcome. 
+    Future work would include rematches in case of draws.
+    
+    */
+
+
+    function computerPlay(){
+        let randomNumber = parseInt(Math.random() * (3) + 1);
+        let compChoice;
+        switch (randomNumber){
+            case 1:
+              compChoice = 'Rock';
+              break;
+            case 2:
+              compChoice = 'Paper';
+              break;
+            default:
+              compChoice = 'Scissors';  
+        }
+        return(compChoice)
+    }
+    
+    let playerWinCount = 0
+    let compWinCount = 0
+
+    function singleRound(){
+        let playerChoice = prompt('Rock, Paper, or Sissors?', '').toUpperCase();
+        let computerChoice = computerPlay();
+        let result 
+
+        switch(playerChoice){
+            case 'ROCK':
+                switch(computerChoice){
+                    case 'Rock':
+                        result = 'draw'
+                        break;
+                    case 'Paper':
+                        result = 'Computer';
+                        compWinCount++;
+                        break;
+                    case 'Scissors':
+                        result = 'Player';
+                        playerWinCount++;
+                        break;
+                }
+                break;
+            case 'PAPER':
+                switch(computerChoice){
+                    case 'Rock':
+                        result = 'Player';
+                        playerWinCount++;    
+                        break;                    
+                    case 'Paper':
+                        result = 'draw'
+                        break;
+                    case 'Scissors':
+                        result = 'Computer';
+                        compWinCount++;
+                         break;    
+                }
+                break;
+            case 'SCISSORS':
+            switch(computerChoice){
+                    case 'Rock':
+                        result = 'Computer';
+                        compWinCount++;
+                        break;
+                    case 'Paper':
+                        result = 'Player';
+                        playerWinCount++;
+                        break;
+                    case 'Scissors':
+                        result = 'draw'   
+                        break;                    
+                }
+                break;
+            default:
+                alert('Please enter Rock, Paper, or Scissors only.')            
+        }
+        alert(result + ' won this match');
+    }
+
+    function rockPaperScissors(){
+        playerWinCount = 0;
+        compWinCount = 0;
+
+        for (let i = 0; i < 5; i++) { 
+            singleRound();
+        }
+
+        if (playerWinCount > compWinCount){
+            alert('You Win!')
+        } else if (compWinCount > playerWinCount) {
+            alert('You Lost. Try again next time.')
+        } else {
+            alert('Looks like this is a draw')
+        }
+    }
+    
+// alert winner
+
+
+    rockPaperScissors();
+
+    </script>
+    
+    <head>
+    </head>
+    <body>
+    </body>
